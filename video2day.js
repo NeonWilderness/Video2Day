@@ -14,6 +14,7 @@
                     vimeo: '<iframe width="{w}" height="{h}" src="http://player.vimeo.com/video/{v}?byline=0&amp;portrait=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
                     vevo: '<object width="{w}" height="{h}"><param name="movie" value="http://videoplayer.vevo.com/embed/Embedded?videoId={v}&playlist=false&autoplay=0&playerId=&playerType=embedded&env=0&cultureName=de-DE&cultureIsRTL=False"></param><param name="wmode" value="transparent"></param><param name="bgcolor" value="#000000"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://videoplayer.vevo.com/embed/Embedded?videoId={v}&playlist=false&autoplay=0&playerId=&playerType=embedded&env=0&cultureName=de-DE&cultureIsRTL=False" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="{w}" height="{h}" bgcolor="#000000" wmode="transparent"></embed></object>',
                     bliptv: '<iframe width="{w}" height="{h}" src="http://blip.tv/play/{v}?p=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+                    dailymotion: '<iframe width="{w}" height="{h}" src="http://www.dailymotion.com/embed/video/{v}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
                 },
                 init: function(useroptions){
 //----------------- Take over user options, if any
@@ -65,7 +66,7 @@
 //--------------------- Did user correctly specify a valid video type?
                         } else  if (vidType.length===0){
 //------------------------- No, then prepare error text
-                            html = '<p class="message">Bitte "youtube", "vimeo", "vevo", "bliptv" oder "other" im class-Parameter "' + self.attr('class') + '" ergänzen!</p>';
+                            html = '<p class="message">Bitte '+vidTypes.join(", ")+' oder other im class-Parameter "' + self.attr('class') + '" ergänzen!</p>';
                         } else if (vidType==="other"){
 //------------------------- Generate the HTML5 player action with a hosted cloud mp4 file (e.g. Wuala, Dropbox); apply Wuala direct URL conversion
                               vid = vid.replace(options.wualaSourceURL, options.wualaDirectURL);
