@@ -52,6 +52,11 @@ Only in the event that you want to show off MP4-videos that are **not** hosted o
     <link href="http://static.twoday.net/cdn/files/video41-min-css.css" rel="stylesheet">
     <script src="http://static.twoday.net/cdn/files/video41-min-js.js"></script>
 
+For using video.js outside the Twoday platform, you may also like to utilize its standard CDN:
+
+    <link href="//vjs.zencdn.net/4.4/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.4/video.js"></script>
+
 According to the [video.js setup instructions](https://github.com/videojs/video.js/blob/stable/docs/guides/setup.md), you should put both links into your HTML's head area.
 
 ###B. The HTML
@@ -76,9 +81,11 @@ If you don't specify a **width**, the video uses the width of its parent DIV con
  Parameter | Description
  --------- | -----------
  html5video | trigger class for the script to embed a video into this DIV
- youtube | generates a YouTube-Link
- vimeo | generates a Vimeo-Link
- bliptv | generates a BlipTV-Link
+ youtube | generates a YouTube-iframe
+ vimeo | generates a Vimeo-iframe
+ vevo | generates a Vevo-object
+ bliptv | generates a BlipTV-iframe
+ dailymotion | generates a DailyMotion-iframe
  other | generates a video link to a file hosted in a public cloud directory (e.g. Wuala, Dropbox or other)
  width-xxx | reserves a width of xxx pixels for the video (default is the width of the parent DIV)
  ratio-x.yyyy | defines an aspect ratio which is used to calculate the height of the video container (default is 16:9 = 1.7777)
