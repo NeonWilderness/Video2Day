@@ -3,7 +3,7 @@
     $.fn.video2day = function(){
         var $videos = this,
             video2dayObj = {
-                version: "0.1",
+                version: "0.2",
                 defaults: {
                     'addFlexVideoClass': true, // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
                     'wualaSourceURL': "http://www.wuala.com", // Wuala Source URL
@@ -16,9 +16,11 @@
                     bliptv: '<iframe width="{w}" height="{h}" src="http://blip.tv/play/{v}?p=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
                 },
                 init: function(useroptions){
+//----------------- Take over user options, if any
                     var options = $.extend( {}, video2dayObj.defaults, useroptions || {} ),
                         vidTypes = Object.keys(video2dayObj.vidParam),
                         self, html, width, height, vid, ratio, vidType, hasPoster, imageExt;
+//----------------- For each of the html5video-instances...
                     $videos.each( function(){
 //--------------------- Establish default values for each video (may be overwritten by class settings)
                         self = $(this);
@@ -52,16 +54,20 @@
                               if (vidTypes.indexOf(item)>=0){ vidType = item; }
                             }
                         });
-//--------------------- Calculate height based on specified ratio (Standard is 16/9)
+//--------------------- Calculate height based on specified ratio (Default is 16/9)
                         height = Math.round(width/ratio);
 //--------------------- Get the video-ID (YouTube, Vimeo, Vevo, BlipTV) or the File Link
-                        vid = self.attr("id");
+                        vid = self.attr("id") || "";
+//--------------------- Did user correctly specify the video id?
+                        if (vid.length===0){
+//------------------------- No, then prepare error text
+                            html = '<p class="message">Bitte ergänzen Sie die Video-ID/-URL im Parameter "id"!</p>';
 //--------------------- Did user correctly specify a valid video type?
-                        if (vidType.length===0){
-//------------------------- No, then display error text
+                        } else  if (vidType.length===0){
+//------------------------- No, then prepare error text
                             html = '<p class="message">Bitte "youtube", "vimeo", "vevo", "bliptv" oder "other" im class-Parameter "' + self.attr('class') + '" ergänzen!</p>';
                         } else if (vidType==="other"){
-//------------------------- Generate the HTML5 player action with a hosted cloud mp4 file (e.g. Wuala, Dropbox); apply Wuala direct URL
+//------------------------- Generate the HTML5 player action with a hosted cloud mp4 file (e.g. Wuala, Dropbox); apply Wuala direct URL conversion
                               vid = vid.replace(options.wualaSourceURL, options.wualaDirectURL);
                               var poster = (hasPoster) ? ' poster="' + vid.substr(0,vid.lastIndexOf(".")+1) + imageExt + '"' : "";
                               html = '<video class="video-js vjs-default-skin" controls preload="auto" width="' + width + '" height="' + height + '" data-setup="{}"' + poster + '><source src="' + vid + '" type="video/mp4"></video>';
@@ -76,7 +82,7 @@
 //--------------------- Push the iframe/object into the HTML (div)
                         self.append(html);
                     });
-//----------------- Enable jQuery chaining					
+//----------------- Enable jQuery chaining
                     return $videos;
                 }
             };
