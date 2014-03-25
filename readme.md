@@ -3,11 +3,13 @@
 Full German documentation and demo [here](http://cdn.twoday.net/stories/videoplayer).
 
 ##Features
-This jQuery Script enables easy video integration for blogs on the [Twoday Blogger Platform](http://twoday.net). The Twoday Platform does currently not support modern HTML5 (e.g. no ```data-xxx``` attributes) and prohibits the utilization of ```iframe```-tags which are filtered from a story's text/code content. The syntax uses simple, HTML4-compatible DIV-classes to have the script inject the correct iframe/object-tag for the target video platform.
+This jQuery Script enables easy video integration for blogs on the [Twoday Blogger Platform](http://twoday.net). The Twoday Platform does currently not support modern HTML5 (e.g. no ```data-xxx``` attributes) and prohibits utilization of ```iframe```-tags which are filtered from a story's text/code content. Therefore the syntax uses simple, HTML4-compatible DIV-classes which tell the script to inject the correct iframe/object-tag for the desired target video.
 
-**Video2day** generates appropriate ```iframe``` or ```object``` declarations for video service providers such as **YouTube**, **Vimeo**, **Vevo**, **BlipTV** and supports video integration of **any cloud-hosted MP4 file** (e.g. Wuala, Dropbox, GoogleDrive or other direct URL sources) by inserting valid HTML-code for the widely known [HTML5 Video Player](http://www.videojs.com/) script.
+**Video2day** generates appropriate ```iframe``` or ```object``` declarations for video service providers such as **YouTube**, **Vimeo**, **Vevo**, **BlipTV**, **DailyMotion** and supports video integration of **any cloud-hosted MP4 file** (e.g. Wuala, Dropbox, GoogleDrive or other direct URL sources) by inserting valid HTML-code for the widely known [HTML5 Video Player](http://www.videojs.com/) script.
 
-The DIV triggering the integration of the video embed code utilizes the special class **"html5video"** and makes use of further class additions to define the target video platform, the video dimensions and poster information (if any).
+The DIV triggering the video code must carry the special class **"html5video"** and makes use of further class additions to define the target video platform, the video dimensions and poster information (if any).
+
+The script is not limited to the Twoday application and can basically be used on any (blogger) platform that allows to embed scripts but prohibits the direct use of iframes.
 
 ##Getting started
 ###A. Scripts & CSS
@@ -24,7 +26,7 @@ Then, after the jQuery, embed the following script-tag at the end of your HTML's
     <script src="http://static.twoday.net/cdn/files/video2day-min-js.js"></script>
     <script type="text/javascript">
          $(document).ready(function(){
-             $(".html5video").video2day.init();
+             $(".html5video").video2day().init();
          });
     </script>
 
@@ -32,7 +34,7 @@ The following script-parameters are available:
 
  Parameter | Description | Default
  --------- | ----------- | -------
- addFlexVideoClass | true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout) | true
+ addFlexVideoClass | true=adds class "flex-video" to surrounding DIV (Foundation 5: responsive video layout) | true
  wualaSourceURL | Wuala Source URL | "http://www.wuala.com"
  wualaDirectURL | Wuala Direct URL | "http://content.wuala.com/contents"
 
@@ -40,12 +42,12 @@ Example: If you want the "flex-video" class to be added only in the event that F
 
     <script type="text/javascript">
          $(document).ready(function(){
-             $(".html5video").video2day.init({ addFlexVideoClass: (typeof($.fn.foundation)!=="undefined") });
+             $(".html5video").video2day().init({ addFlexVideoClass: (typeof($.fn.foundation)!=="undefined") });
          });
     </script>
 
 ####Video.js
-Only in the event that you want to show off MP4-videos that are **not** hosted on YouTube, Vimeo, Vevo or BlipTV, you need to add the CSS and script additions for video.js component. Those are also available from the Twoday CDN:
+Only in the event that you want to show off MP4-videos that are **not** hosted on YouTube, Vimeo, Vevo, BlipTV or DailyMotion, you need to add the CSS and script additions for video.js component. Those are also available from the Twoday CDN:
 
     <link href="http://static.twoday.net/cdn/files/video41-min-css.css" rel="stylesheet">
     <script src="http://static.twoday.net/cdn/files/video41-min-js.js"></script>
@@ -64,6 +66,8 @@ Use any of the DIV tags below within your blog text content to display the desir
 `<div class="html5video vevo width-xxx ratio-x.yyyy" id="vevovideoid"></div>`
 * for BlipTV:<br>
 `<div class="html5video bliptv width-xxx ratio-x.yyyy" id="bliptvvideoid"></div>`
+* for DailyMotion:<br>
+`<div class="html5video dailymotion width-xxx ratio-x.yyyy" id="dailymotionvideoid"></div>`
 * for Other (video.js needed):<br>
 `<div class="html5video other width-xxx ratio-x.yyyy poster image-xxx" id="URLtotargetfile"></div>`
 
@@ -94,6 +98,8 @@ If you don't specify a **width**, the video uses the width of its parent DIV con
 `<div class="html5video vevo ratio-1.7747" id="GBUV71300569"></div>`
 * for a BlipTV video:<br>
 `<div class="html5video bliptv ratio-1.6628" id="AYOVjyIC.x"></div>`
+* for a DailyMotion video:<br>
+`<div class="html5video dailymotion" id="xbnwt9"></div>`
 * for a Wuala video:<br>
 `<div class="html5video other" id="http://www.wuala.com/NeonWilderness/Public/movies/oceans-clip.mp4"></div>`
 * with widescreen & poster:<br>

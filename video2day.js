@@ -19,7 +19,7 @@
                 init: function(useroptions){
 //----------------- Take over user options, if any
                     var options = $.extend( {}, video2dayObj.defaults, useroptions || {} ),
-                        vidTypes = Object.keys(video2dayObj.vidParam),
+                        vidTypes = Object.keys(video2dayObj.vidParam).concat("other"),
                         self, html, width, height, vid, ratio, vidType, hasPoster, imageExt;
 //----------------- For each of the html5video-instances...
                     $videos.each( function(){
@@ -62,11 +62,11 @@
 //--------------------- Did user correctly specify the video id?
                         if (vid.length===0){
 //------------------------- No, then prepare error text
-                            html = '<p class="message">Bitte erg‰nzen Sie die Video-ID/-URL im Parameter "id"!</p>';
+                            html = '<p class="message">Bitte die Video-ID bzw. -URL im Parameter "id" erg√§nzen!</p>';
 //--------------------- Did user correctly specify a valid video type?
                         } else  if (vidType.length===0){
 //------------------------- No, then prepare error text
-                            html = '<p class="message">Bitte '+vidTypes.join(", ")+' oder other im class-Parameter "' + self.attr('class') + '" erg‰nzen!</p>';
+                            html = '<p class="message">Bitte '+vidTypes.join(", ")+' im class-Parameter "' + self.attr('class') + '" erg√§nzen!</p>';
                         } else if (vidType==="other"){
 //------------------------- Generate the HTML5 player action with a hosted cloud mp4 file (e.g. Wuala, Dropbox); apply Wuala direct URL conversion
                               vid = vid.replace(options.wualaSourceURL, options.wualaDirectURL);
