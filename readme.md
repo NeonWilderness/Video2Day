@@ -47,15 +47,15 @@ Example: If you want the "flex-video" class to be added only in the event that F
     </script>
 
 ####Video.js
-Only in the event that you want to show off MP4-videos that are **not** hosted on YouTube, Vimeo, Vevo, BlipTV or DailyMotion, you need to add the CSS and script additions for video.js component. Those are also available from the Twoday CDN:
+Only in the event that you want to show off MP4-videos that are **not** hosted on YouTube, Vimeo, Vevo, BlipTV or DailyMotion, you need to add the CSS and script additions for the video.js component. Those are also available from the Twoday CDN:
 
-    <link href="http://static.twoday.net/cdn/files/video41-min-css.css" rel="stylesheet">
-    <script src="http://static.twoday.net/cdn/files/video41-min-js.js"></script>
+    <link href="http://static.twoday.net/cdn/files/video43-min-css.css" rel="stylesheet">
+    <script src="http://static.twoday.net/cdn/files/video43-min-js.js"></script>
 
 For using video.js outside the Twoday platform, you may also like to utilize its standard CDN:
 
-    <link href="//vjs.zencdn.net/4.4/video-js.css" rel="stylesheet">
-    <script src="//vjs.zencdn.net/4.4/video.js"></script>
+    <link href="//vjs.zencdn.net/4.3/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.3/video.js"></script>
 
 According to the [video.js setup instructions](https://github.com/videojs/video.js/blob/stable/docs/guides/setup.md), you should put both links into your HTML's head area.
 
