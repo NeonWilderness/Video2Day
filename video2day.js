@@ -3,18 +3,19 @@
     $.fn.video2day = function(){
         var $videos = this,
             video2dayObj = {
-                version: "0.2",
+                version: "0.3",
                 defaults: {
                     'addFlexVideoClass': true, // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
                     'wualaSourceURL': "http://www.wuala.com", // Wuala Source URL
                     'wualaDirectURL': "http://content.wuala.com/contents" // Wuala Direct URL
                 },
                 vidParam : {
-                    youtube: '<iframe width="{w}" height="{h}" src="http://www.youtube.com/embed/{v}?fs=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
-                    vimeo: '<iframe width="{w}" height="{h}" src="http://player.vimeo.com/video/{v}?byline=0&amp;portrait=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
-                    vevo: '<object width="{w}" height="{h}"><param name="movie" value="http://videoplayer.vevo.com/embed/Embedded?videoId={v}&playlist=false&autoplay=0&playerId=&playerType=embedded&env=0&cultureName=de-DE&cultureIsRTL=False"></param><param name="wmode" value="transparent"></param><param name="bgcolor" value="#000000"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://videoplayer.vevo.com/embed/Embedded?videoId={v}&playlist=false&autoplay=0&playerId=&playerType=embedded&env=0&cultureName=de-DE&cultureIsRTL=False" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="{w}" height="{h}" bgcolor="#000000" wmode="transparent"></embed></object>',
-                    bliptv: '<iframe width="{w}" height="{h}" src="http://blip.tv/play/{v}?p=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
-                    dailymotion: '<iframe width="{w}" height="{h}" src="http://www.dailymotion.com/embed/video/{v}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
+                    youtube: '<iframe width="{w}" height="{h}" src="http://www.youtube.com/embed/{v}" frameborder="0" allowfullscreen></iframe>',
+                    vimeo: '<iframe width="{w}" height="{h}" src="http://player.vimeo.com/video/{v}?byline=0&amp;portrait=0" frameborder="0"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
+                    vevo: '<iframe width="{w}" height="{h}" src="http://cache.vevo.com/m/html/embed.html?video={v}" frameborder="0" allowfullscreen></iframe>',
+                    bliptv: '<iframe width="{w}" height="{h}" src="http://blip.tv/play/{v}?p=1" frameborder="0" allowfullscreen></iframe>',
+                    dailymotion: '<iframe width="{w}" height="{h}" src="http://www.dailymotion.com/embed/video/{v}" frameborder="0" allowfullscreen></iframe>',
+                    putpat: '<iframe width="{w}" height="{h}" src="http://www.putpat.tv/iframe/videos/{v}" frameborder="0" allowfullscreen></iframe>'
                 },
                 init: function(useroptions){
 //----------------- Take over user options, if any
