@@ -5,7 +5,7 @@ Full German documentation and demo [here](http://cdn.twoday.net/stories/videopla
 ##Features
 This jQuery Script enables easy video integration for blogs on the [Twoday Blogger Platform](http://twoday.net). The Twoday Platform does currently not support modern HTML5 (e.g. no ```data-xxx``` attributes) and prohibits utilization of ```iframe```-tags which are filtered from a story's text/code content. Therefore the syntax uses simple, HTML4-compatible DIV-classes which tell the script to inject the correct iframe/object-tag for the desired target video.
 
-**Video2day** generates appropriate ```iframe``` or ```object``` declarations for video service providers such as **YouTube**, **Vimeo**, **Vevo**, **BlipTV**, **DailyMotion** and supports video integration of **any cloud-hosted MP4 file** (e.g. Wuala, Dropbox, GoogleDrive or other direct URL sources) by inserting valid HTML-code for the widely known [HTML5 Video Player](http://www.videojs.com/) script.
+**Video2day** generates appropriate ```iframe``` or ```object``` declarations for video service providers such as **YouTube**, **Vimeo**, **Vevo**, **BlipTV**, **DailyMotion**, **Putpat** and supports video integration of **any cloud-hosted MP4 file** (e.g. Wuala, Dropbox, GoogleDrive or other direct URL sources) by inserting valid HTML-code for the widely known [HTML5 Video Player](http://www.videojs.com/) script.
 
 The DIV triggering the video code must carry the special class **"html5video"** and makes use of further class additions to define the target video platform, the video dimensions and poster information (if any).
 
@@ -73,6 +73,8 @@ Use any of the DIV tags below within your blog text content to display the desir
 `<div class="html5video bliptv width-xxx ratio-x.yyyy" id="bliptvvideoid"></div>`
 * for DailyMotion:<br>
 `<div class="html5video dailymotion width-xxx ratio-x.yyyy" id="dailymotionvideoid"></div>`
+* for Putpat:<br>
+`<div class="html5video putpat width-xxx ratio-x.yyyy" id="putpatvideoid"></div>`
 * for Other (video.js needed):<br>
 `<div class="html5video other width-xxx ratio-x.yyyy poster image-xxx" id="URLtotargetfile"></div>`
 
@@ -86,6 +88,7 @@ If you don't specify a **width**, the video uses the width of its parent DIV con
  vevo | generates a Vevo-object
  bliptv | generates a BlipTV-iframe
  dailymotion | generates a DailyMotion-iframe
+ putpat | generates a Putpat-iframe
  other | generates a video link to a file hosted in a public cloud directory (e.g. Wuala, Dropbox or other)
  width-xxx | reserves a width of xxx pixels for the video (default is the width of the parent DIV)
  ratio-x.yyyy | defines an aspect ratio which is used to calculate the height of the video container (default is 16:9 = 1.7777)
@@ -107,6 +110,8 @@ If you don't specify a **width**, the video uses the width of its parent DIV con
 `<div class="html5video bliptv ratio-1.6628" id="AYOVjyIC.x"></div>`
 * for a DailyMotion video:<br>
 `<div class="html5video dailymotion" id="xbnwt9"></div>`
+* for a Putpat video:<br>
+`<div class="html5video putpat ratio-2.4" id="3qs5vhn"></div>`
 * for a Wuala video:<br>
 `<div class="html5video other" id="http://www.wuala.com/NeonWilderness/Public/movies/oceans-clip.mp4"></div>`
 * with widescreen & poster:<br>
