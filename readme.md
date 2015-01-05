@@ -9,7 +9,7 @@ This jQuery Script enables easy video integration for blogs on the [Twoday Blogg
 
 The DIV triggering the video code must carry the special class **"html5video"** and makes use of further class additions to define the target video platform, the video dimensions and poster information (if any).
 
-The script is not limited to the Twoday application and can basically be used on any (blogger) platform that allows to embed scripts but prohibits the direct use of iframes.
+The script is not limited to the Twoday application and can basically be used on any (blogger) platform that allows to embed individual scripts but prohibits the direct use of iframes.
 
 ##Getting started
 ###A. Scripts & CSS
@@ -35,9 +35,8 @@ The following script-parameters are available:
  Parameter | Description | Default
  --------- | ----------- | -------
  addFlexVideoClass | true=adds class "flex-video" to surrounding DIV (Foundation 5: responsive video layout) | true
- wualaSourceURL | Wuala Source URL | "http://www.wuala.com"
- wualaDirectURL | Wuala Direct URL | "http://content.wuala.com/contents"
-
+ position | video insert position  | "bottom" (appended in DIV); can be "top" (prepended in DIV)
+ 
 Example: If you want the "flex-video" class to be added only in the event that Foundation 5 is active, you can specify the following:
 
     <script type="text/javascript">
@@ -113,6 +112,6 @@ If you don't specify a **width**, the video uses the width of its parent DIV con
 * for a Putpat video:<br>
 `<div class="html5video putpat ratio-2.4" id="3qs5vhn"></div>`
 * for a Wuala video:<br>
-`<div class="html5video other" id="http://www.wuala.com/NeonWilderness/Public/movies/oceans-clip.mp4"></div>`
+`<div class="html5video other" id="http://content.wuala.com/contents/NeonWilderness/Public/movies/oceans-clip.mp4"></div>`
 * with widescreen & poster:<br>
-`<div class="html5video other poster image-jpg ratio-2.4" id="http://www.wuala.com/NeonWilderness/Public/movies/oceans-clip.mp4"></div>`
+`<div class="html5video other poster image-jpg ratio-2.4" id="http://content.wuala.com/contents/NeonWilderness/Public/movies/oceans-clip.mp4"></div>`

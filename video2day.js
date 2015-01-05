@@ -5,7 +5,7 @@
             video2dayObj = {
                 version: "0.4",
                 defaults: {
-                    'addFlexVideoClass': (typeof $.fn.foundation !== 'undefined'), // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
+                    'addFlexVideoClass': true, // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
                     'position': 'bottom' // target position of video: "top"=prepend=video at top, "bottom"=append=video at bottom
                 },
                 vidFrame: '<iframe width="{w}" height="{h}" src={p} frameborder="0" allowfullscreen></iframe>',
