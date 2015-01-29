@@ -5,16 +5,16 @@
             video2dayObj = {
                 version: "0.4",
                 defaults: {
-                    'addFlexVideoClass': true, // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
+                    'addFlexVideoClass': false, // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
                     'position': 'bottom' // target position of video: "top"=prepend=video at top, "bottom"=append=video at bottom
                 },
                 vidFrame: '<iframe width="{w}" height="{h}" src={p} frameborder="0" allowfullscreen></iframe>',
                 vidParam : {
-                    youtube:     '"http://www.youtube.com/embed/{v}"',
-                    vimeo:       '"http://player.vimeo.com/video/{v}?byline=0&portrait=0"',
-                    vevo:        '"http://cache.vevo.com/assets/html/embed.html?video={v}"',
+                    youtube:     '"//www.youtube.com/embed/{v}"',
+                    vimeo:       '"//player.vimeo.com/video/{v}"',
+                    vevo:        '"http://cache.vevo.com/assets/html/embed.html?video={v}&autoplay=0"',
                     bliptv:      '"http://blip.tv/play/{v}?p=1"',
-                    dailymotion: '"http://www.dailymotion.com/embed/video/{v}"',
+                    dailymotion: '"//www.dailymotion.com/embed/video/{v}"',
                     putpat:      '"http://www.putpat.tv/iframe/videos/{v}"'
                 },
                 errmsg: function(content){
@@ -26,7 +26,7 @@
                         vidTypes = Object.keys(video2dayObj.vidParam).concat("other"),
                         self, html, width, height, vid, ratio, vidType, hasPoster, imageExt;
 //----------------- For each of the html5video-instances...
-                    $videos.each( function(){ debugger;
+                    $videos.each( function(){
 //--------------------- Establish default values for each video (may be overwritten by class settings)
                         self = $(this);
                         html = "";
@@ -56,7 +56,7 @@
                               imageExt = this.substr(6,this.length-6);
                               break;
                             default:
-                              if (vidTypes.indexOf(this)>=0){ vidType = this; }
+                              if (vidTypes.indexOf(this)>=0) vidType = this;
                             }
                         });
 //--------------------- Calculate height based on specified ratio (Default is 16/9)
@@ -72,7 +72,7 @@
 //------------------------- No, then prepare error text
                             html = video2dayObj.errmsg('Bitte '+vidTypes.join(", ")+' im class-Parameter "' + self.attr('class') + '" ergänzen!');
                         } else if (vidType==="other"){
-//------------------------- Generate the HTML5 player action with a hosted cloud mp4 file (e.g. Wuala, Dropbox); apply Wuala direct URL conversion
+//------------------------- Generate the HTML5 player action with a hosted cloud mp4 file
                               var poster = (hasPoster) ? ' poster="' + vid.substr(0,vid.lastIndexOf(".")+1) + imageExt + '"' : "";
                               html = '<video class="video-js vjs-default-skin" controls preload="auto" width="' + width + '" height="' + height + '" data-setup="{}"' + poster + '><source src="' + vid + '" type="video/mp4"></video>';
                         } else {
