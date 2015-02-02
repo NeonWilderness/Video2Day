@@ -62,35 +62,29 @@ According to the [video.js setup instructions](https://github.com/videojs/video.
 
 Use any of the DIV tags below within your blog text content to display the desired type of video
 
-* for YouTube:<br>
+* e.g. for YouTube:<br>
 `<div class="html5video youtube width-xxx ratio-x.yyyy" id="youtubevideoid"></div>`
-* for Vimeo:<br>
-`<div class="html5video vimeo width-xxx ratio-x.yyyy" id="vimeovideoid"></div>`
-* for Vevo:<br>
-`<div class="html5video vevo width-xxx ratio-x.yyyy" id="vevovideoid"></div>`
-* for BlipTV:<br>
-`<div class="html5video bliptv width-xxx ratio-x.yyyy" id="bliptvvideoid"></div>`
-* for DailyMotion:<br>
-`<div class="html5video dailymotion width-xxx ratio-x.yyyy" id="dailymotionvideoid"></div>`
-* for Putpat:<br>
-`<div class="html5video putpat width-xxx ratio-x.yyyy" id="putpatvideoid"></div>`
 * for Other (video.js needed):<br>
-`<div class="html5video other width-xxx ratio-x.yyyy poster image-xxx" id="URLtotargetfile"></div>`
+`<div class="html5video other width-xxx ratio-x.yyyy poster image-xxx" id="URLtotargetMP4file"></div>`
 
-If you don't specify a **width**, the video uses the width of its parent DIV container. You don't need to specify an aspect **ratio** unless you want a different formfactor than 16:9. The parameters are:
+If you don't specify a **width**, the video uses the full width of its parent DIV container. You don't need to specify an aspect **ratio** unless you want a different formfactor than 16:9. The available parameters are:
 
  Parameter | Description
  --------- | -----------
  html5video | trigger class for the script to embed a video into this DIV
  youtube | generates a YouTube-iframe
  vimeo | generates a Vimeo-iframe
- vevo | generates a Vevo-object
+ vevo | generates a Vevo-iframe
  bliptv | generates a BlipTV-iframe
  dailymotion | generates a DailyMotion-iframe
  putpat | generates a Putpat-iframe
- other | generates a video link to a file hosted in a public cloud directory (e.g. Wuala, Dropbox or other)
+ vube | generates a Vube-iframe
+ liveleak | generates a Liveleak-iframe
+ vine | generates a Vine-iframe
+ metacafe | generates a Metacafe-iframe
+ other | generates a video link to a MP4-file hosted in a public cloud directory (e.g. GoogleDrive, Dropbox or other)
  width-xxx | reserves a width of xxx pixels for the video (default is the width of the parent DIV)
- ratio-x.yyyy | defines an aspect ratio which is used to calculate the height of the video container (default is 16:9 = 1.7777)
+ ratio-x.yyyy | defines an aspect ratio which is used to calculate the height of the video container (default is 16:9 = 1.7778)
  poster | "Other" only: instructs the script to use a poster image for a cloud-hosted video (until the video is started)
  image-xxx | "Other" only: instructs the script to use the image extension xxx when looking for the poster image (same name as video file)
 
@@ -111,7 +105,5 @@ If you don't specify a **width**, the video uses the width of its parent DIV con
 `<div class="html5video dailymotion" id="xbnwt9"></div>`
 * for a Putpat video:<br>
 `<div class="html5video putpat ratio-2.4" id="3qs5vhn"></div>`
-* for a Wuala video:<br>
-`<div class="html5video other" id="http://content.wuala.com/contents/NeonWilderness/Public/movies/oceans-clip.mp4"></div>`
 * with widescreen & poster:<br>
-`<div class="html5video other poster image-jpg ratio-2.4" id="http://content.wuala.com/contents/NeonWilderness/Public/movies/oceans-clip.mp4"></div>`
+`<div class="html5video other poster image-jpg ratio-2.421" id="https://googledrive.com/host/0B87rILW4RVIJUFpWT2dLeG9RUzg/oceans-clip.mp4"></div>`
