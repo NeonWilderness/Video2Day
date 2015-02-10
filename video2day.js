@@ -19,7 +19,8 @@
                     vube:        '"http://vube.com/embed/video/{v}?autoplay=false&fit=true"',
                     liveleak:    '"http://www.liveleak.com/ll_embed?f={v}"',
                     vine:        '"https://vine.co/v/{v}/embed/postcard"',
-                    metacafe:    '"http://www.metacafe.com/embed/{v}/"'
+                    metacafe:    '"http://www.metacafe.com/embed/{v}/"',
+                    myvideo:     '"http://www.myvideo.de/embed/{v}"'
                 },
                 errmsg: function(content){
                     return '<p class="message">'+content+'</p>';
