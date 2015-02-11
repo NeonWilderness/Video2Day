@@ -1,4 +1,6 @@
 $(document).ready( function(){
+
+    // display all existing twoday tipps in the top sidebar item
     var $item = $(".sidebarItem:first");
     $.get("/topics/Sch%C3%B6ner+Bloggen/", function(data){
         var html = "", wrapTipp = '<div class="sideHistoryItem clearfix"><div class="sideHistoryTitle">{tip}</div></div>';
@@ -12,6 +14,11 @@ $(document).ready( function(){
         }
     });
 
+    // prepend the backlink to the videos tip to the top right of the story
+    var $prep = $("#prependStory");
+    $prep.closest(".story").prepend($prep.html());
+
+    // setup the knockout MVVM viewmodel
     var c43 = "1.3333", c169 = "1.7778";
     var viewModelVideoOptions = {
         txtIframe: ko.observable(""),
