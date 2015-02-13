@@ -3,7 +3,7 @@
     $.fn.video2day = function(){
         var $videos = this,
             video2dayObj = {
-                version: "0.5",
+                version: "0.6",
                 defaults: {
                     'addFlexVideoClass': false, // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
                     'position': 'bottom' // target position of video: "top"=prepend=video at top, "bottom"=append=video at bottom
@@ -18,7 +18,7 @@
                     putpat:      '"http://www.putpat.tv/iframe/videos/{v}"',
                     vube:        '"http://vube.com/embed/video/{v}?autoplay=false&fit=true"',
                     liveleak:    '"http://www.liveleak.com/ll_embed?f={v}"',
-                    vine:        '"https://vine.co/v/{v}/embed/postcard"',
+                    vine:        '"https://vine.co/v/{v}/embed/simple"',
                     metacafe:    '"http://www.metacafe.com/embed/{v}/"',
                     myvideo:     '"http://www.myvideo.de/embed/{v}"'
                 },
@@ -29,13 +29,15 @@
 //----------------- Take over user options, if any
                     var options = $.extend( {}, video2dayObj.defaults, useroptions || {} ),
                         vidTypes = Object.keys(video2dayObj.vidParam).concat("other"),
-                        self, html, width, height, vid, ratio, vidType, hasPoster, imageExt;
+                        self, html, story, width, height, vid, ratio, vidType, hasPoster, imageExt;
 //----------------- For each of the html5video-instances...
                     $videos.each( function(){
 //--------------------- Establish default values for each video (may be overwritten by class settings)
                         self = $(this);
                         html = "";
+                        story = self.parents(".storyContent").width() || 0;
                         width = self.parents().width();
+                        if (story !== 0 && story<width) width = story;
                         ratio = 16/9;
                         vidType = "";
                         hasPoster = false;
