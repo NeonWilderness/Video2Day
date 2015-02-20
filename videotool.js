@@ -19,7 +19,7 @@ $(document).ready( function(){
     $prep.closest(".story").prepend($prep.html());
 
     // setup the knockout MVVM viewmodel
-    var c43 = "1.3333", c169 = "1.7778";
+    var c43 = "1.33333", c169 = "1.77777";
     var viewModelVideoOptions = {
         txtIframe: ko.observable(""),
         errIframe: ko.observable(""),
@@ -76,7 +76,7 @@ $(document).ready( function(){
         var self = this;
         try {
             var $iframe = $("<div>").html(code).find("iframe"),
-                ratio = (Math.round(parseInt($iframe.attr("width")) / parseInt($iframe.attr("height")) * 10000) / 10000).toString(),
+                ratio = (Math.round(parseInt($iframe.attr("width")) / parseInt($iframe.attr("height")) * 100000) / 100000).toString(),
                 src = $iframe.attr("src"), vid = false;
             $.each( this.provider, function(){
                 if (src.indexOf(this.id)>=0){
