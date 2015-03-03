@@ -3,7 +3,7 @@
     $.fn.video2day = function(){
         var $videos = this,
             video2dayObj = {
-                version: "0.6",
+                version: "0.7",
                 defaults: {
                     'addFlexVideoClass': false, // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
                     'position': 'bottom' // target position of video: "top"=prepend=video at top, "bottom"=append=video at bottom
@@ -16,7 +16,7 @@
                     bliptv:      '"http://blip.tv/play/{v}?p=1"',
                     dailymotion: '"//www.dailymotion.com/embed/video/{v}"',
                     putpat:      '"http://www.putpat.tv/iframe/videos/{v}"',
-                    vube:        '"http://vube.com/embed/video/{v}?autoplay=false&fit=true"',
+                    funnyordie:  '"http://www.funnyordie.com/embed/{v}"',
                     liveleak:    '"http://www.liveleak.com/ll_embed?f={v}"',
                     vine:        '"https://vine.co/v/{v}/embed/simple"',
                     metacafe:    '"http://www.metacafe.com/embed/{v}/"',

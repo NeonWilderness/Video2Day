@@ -64,7 +64,7 @@ $(document).ready( function(){
             { "option": "dailymotion", "id": "dailymotion.com", "vmatch": "\\/video\\/(.*)" },
             { "option": "putpat", "id": "putpat.tv", "vmatch": "-(.*)" },
             { "option": "bliptv", "id": "blip.tv", "vmatch": "\\/play\\/(.*)\\?" },
-            { "option": "vube", "id": "vube.com", "vmatch": "\\/video\\/(.*)\\?" },
+            { "option": "funnyordie", "id": "funnyordie.com", "vmatch": "\\/embed\\/(.*)" },
             { "option": "liveleak", "id": "liveleak.com", "vmatch": "f=(.*)" },
             { "option": "vine", "id": "vine.co", "vmatch": "\\/v\\/(.*)\\/embed" },
             { "option": "metacafe", "id": "metacafe.com", "vmatch": "\\/embed\\/(.*)\\/" },
@@ -75,7 +75,7 @@ $(document).ready( function(){
     viewModelVideoOptions.txtIframe.subscribe(function(code){
         var self = this;
         try {
-            var $iframe = $("<div>").html(code).find("iframe"),
+            var $iframe = $("<div>").html(code).find("iframe").eq(0),
                 ratio = (Math.round(parseInt($iframe.attr("width")) / parseInt($iframe.attr("height")) * 100000) / 100000).toString(),
                 src = $iframe.attr("src"), vid = false;
             $.each( this.provider, function(){

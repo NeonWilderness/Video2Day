@@ -1,4 +1,4 @@
-<div id="prependStory" style="display:none"><div style="position:relative"><a href="http://talkstraight.twoday.net/stories/twoday-tipp-8-videos-anzeigen#install" style="position:absolute;right:0;font-size:12px">Videoload-Script installiert?</a></div></div>
+<div id="prependStory" style="display:none"><div style="position:relative"><a href="http://neonwilderness.twoday.net/stories/twoday-tipp-8-videos-anzeigen#install" style="position:absolute;right:0;font-size:12px">Videoload-Script installiert?</a></div></div>
 <div class="row">
     <div class="small-9 columns">
         <p class="hint bottom0"><strong>Anleitung: </strong>Kopieren Sie den Einbettungscode Ihres Videos in das Feld <em>iframe-Code</em>, um die Optionen zur Videoanzeige vorzubelegen. Ergänzend können Sie die Videobreite anpassen oder alternativ alle Optionen manuell einstellen. Den resultierenden <em>HTML-Code für Twoday</em> kopieren Sie anschließend in Ihren Beitragstext.</p>
@@ -11,32 +11,32 @@ legend i { margin-right: 4px; }
 #txtIframe { font-size: 12px; margin-bottom: 8px; }
 #txtPixel, #txtRatio { display:inline-block; width:123px; margin-right:5px; }
 </style>
-<fieldset><legend><i class="fa fa-film"></i><span>iframe-Code</span></legend><input type="text" id="txtIframe" title="data-bind=textInput:txtIframe | data-!placeholder=Kopieren Sie den iframe-Einbettungscode Ihres Videoanbieters hier hinein"><div title="data-bind=html:errIframe"></div></fieldset>
+<fieldset><legend><i class="fa fa-film"></i><span>iframe-Code</span></legend><input type="text" id="txtIframe" title="data-bind=textInput:txtIframe | data-!placeholder=Kopieren Sie den iframe-Einbettungscode Ihres Videoanbieters hier hinein" /><div title="data-bind=html:errIframe"></div></fieldset>
 <fieldset>
 <legend><i class="fa fa-youtube-play"></i><span>Optionen Videoanzeige</span></legend><div class="row">
     <div class="small-3 columns"><label for="fldProvider">Videoquelle:</label></div>
     <div class="small-9 columns">
-        <select name="fldProvider" id="fldProvider" title="data-bind=value:fldProvider"><option title="data-!value=youtube">YouTube</option><option title="data-!value=vimeo">Vimeo</option><option title="data-!value=vevo">Vevo</option><option title="data-!value=dailymotion">DailyMotion</option><option title="data-!value=putpat">PutPat</option><option title="data-!value=bliptv">BlipTV</option><option title="data-!value=vube">Vube</option><option title="data-!value=liveleak">Liveleak</option><option title="data-!value=vine">Vine</option><option title="data-!value=metacafe">Metacafe</option><option title="data-!value=myvideo">MyVideo</option><option title="data-!value=other">MP4-Video (URL)</option></select></div>
+        <select name="fldProvider" id="fldProvider" title="data-bind=value:fldProvider"><option title="data-!value=youtube">YouTube</option><option title="data-!value=vimeo">Vimeo</option><option title="data-!value=vevo">Vevo</option><option title="data-!value=dailymotion">DailyMotion</option><option title="data-!value=putpat">PutPat</option><option title="data-!value=bliptv">BlipTV</option><option title="data-!value=funnyordie">FunnyOrDie</option><option title="data-!value=liveleak">Liveleak</option><option title="data-!value=vine">Vine</option><option title="data-!value=metacafe">Metacafe</option><option title="data-!value=myvideo">MyVideo</option><option title="data-!value=other">MP4-Video (URL)</option></select></div>
 </div>
 <div class="row">
     <div class="small-3 columns"><label for="selWidth">Videobreite:</label></div>
     <div class="small-9 columns">
-        <input type="radio" name="selWidth" value="full" id="radFull" title="data-bind=checked:selWidth"><label for="radFull">Volle Containerbreite</label><input type="radio" name="selWidth" value="pixel" id="radPixel" title="data-bind=checked:selWidth, click:focusPixel"><label for="radPixel"><input type="text" id="txtPixel" title="data-bind=textInput:txtPixel, enable:txtPixelEnabled"><span>Pixel</span></label>
+        <input type="radio" name="selWidth" value="full" id="radFull" title="data-bind=checked:selWidth" /><label for="radFull">Volle Containerbreite</label><input type="radio" name="selWidth" value="pixel" id="radPixel" title="data-bind=checked:selWidth, click:focusPixel" /><label for="radPixel"><input type="text" id="txtPixel" title="data-bind=textInput:txtPixel, enable:txtPixelEnabled" /><span>Pixel</span></label>
     </div>
 </div>
 <div class="row">
     <div class="small-3 columns"><label for="selRatio">Aspektverhältnis:</label></div>
     <div class="small-9 columns">
-        <input type="radio" name="selRatio" value="1.77777" id="rad169" title="data-bind=checked:selRatio, click:setRatio"><label for="rad169">16:9</label><input type="radio" name="selRatio" value="1.33333" id="rad43" title="data-bind=checked:selRatio, click:setRatio"><label for="rad43">4:3</label><input type="radio" name="selRatio" value="custom" id="radCustomRatio" title="data-bind=checked:selRatio, click:setRatio"><label for="radCustomRatio"><input type="text" id="txtRatio" title="data-bind=textInput:txtRatio, enable:txtRatioEnabled"></label>
+        <input type="radio" name="selRatio" value="1.77777" id="rad169" title="data-bind=checked:selRatio, click:setRatio" /><label for="rad169">16:9</label><input type="radio" name="selRatio" value="1.33333" id="rad43" title="data-bind=checked:selRatio, click:setRatio" /><label for="rad43">4:3</label><input type="radio" name="selRatio" value="custom" id="radCustomRatio" title="data-bind=checked:selRatio, click:setRatio" /><label for="radCustomRatio"><input type="text" id="txtRatio" title="data-bind=textInput:txtRatio, enable:txtRatioEnabled" /></label>
     </div>
 </div>
 <div class="row">
     <div class="small-3 columns"><label for="txtVideo" id="labelVideo" title="data-bind=text:labelVideo"></label></div>
-    <div class="small-9 columns"><input type="text" id="txtVideo" title="data-bind=textInput:txtVideo"></div>
+    <div class="small-9 columns"><input type="text" id="txtVideo" title="data-bind=textInput:txtVideo" /></div>
 </div>
 <div class="row">
     <div class="small-3 columns"><label for="chkPoster">Video-Poster:</label></div>
-    <div class="small-9 columns"><input type="checkbox" id="chkPoster" title="data-bind=checked:chkPoster, enable:chkPosterEnabled"><label for="chkPoster" style="margin-right:0">Standbild anzeigen (nur bei MP4-Video-URL)
+    <div class="small-9 columns"><input type="checkbox" id="chkPoster" title="data-bind=checked:chkPoster, enable:chkPosterEnabled" /><label for="chkPoster" style="margin-right:0">Standbild anzeigen (nur bei MP4-Video-URL)
 </label></div>
 </div>
 <div class="row">
