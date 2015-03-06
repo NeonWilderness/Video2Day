@@ -149,4 +149,15 @@ $(document).ready( function(){
 
     ko.applyBindings(viewModelVideoOptions);
 
+    // analyze url parameters to establish desired default values
+    var params = (location.search.length>0 ? decodeURIComponent(location.search).substr(1).split("&") : []); // ?provider=youtube&videoid=12345678
+    $.each( params, function(){
+        var part = this.split("=");
+        if (part.length<2){ return true; }
+        switch (part[0]) {
+            case "provider": viewModelVideoOptions.fldProvider(part[1]); break; // set the plattform code
+            case "videoid":  viewModelVideoOptions.txtVideo(part[1]); break; // set the video id
+        }
+    });
+
 });
