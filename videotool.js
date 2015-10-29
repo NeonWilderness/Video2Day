@@ -63,12 +63,12 @@ $(document).ready( function(){
             { "option": "vevo", "id": "vevo.com", "vmatch": "\\?video=(.*)\\&" },
             { "option": "dailymotion", "id": "dailymotion.com", "vmatch": "\\/video\\/(.*)" },
             { "option": "putpat", "id": "putpat.tv", "vmatch": "-(.*)" },
-            { "option": "bliptv", "id": "blip.tv", "vmatch": "\\/play\\/(.*)\\?" },
+            { "option": "giphy", "id": "giphy.com", "vmatch": "\\/embed\\/(.*)" },
             { "option": "funnyordie", "id": "funnyordie.com", "vmatch": "\\/embed\\/(.*)" },
             { "option": "liveleak", "id": "liveleak.com", "vmatch": "f=(.*)" },
             { "option": "vine", "id": "vine.co", "vmatch": "\\/v\\/(.*)\\/embed" },
             { "option": "metacafe", "id": "metacafe.com", "vmatch": "\\/embed\\/(.*)\\/" },
-            { "option": "myvideo", "id": "myvideo.de", "vmatch": "\\/embed\\/(.*)" }
+            { "option": "myvideo", "id": "myvideo.de", "vmatch": "\\/public\\/(.*)" }
         ]
     };
 

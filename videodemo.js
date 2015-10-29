@@ -5,7 +5,7 @@ $(function(){
         vevo: { id: "GBUV71300569", cls: "", text: "Jake Bugg - Broken" },
         dailymotion: { id: "x1zb68h", cls: "", text: "Fink - Looking Too Closely (unplugged)" },
         putpat: { id: "3qs5vhn", cls: "ratio-2.4", text: "Two Door Cinema Club - Undercover Martyn" },
-        bliptv: { id: "AYOVjyIC.x", cls: "ratio-1.6628", text: "Tutorial: Wie man sein Motorrad korrekt reinigt" },
+        giphy: { id: "JtwMddKpsF9Hq", cls: "", text: "Dancing Michael Myers" },
         funnyordie: { id: "000a37c115", cls: "ratio-1.6", text: "Girls Are A**holes: In A Bar" },
         liveleak: { id: "cf677a022bd3", cls: "", text: "Kakadu mit langjähriger Streiterfahrung (von geschiedenem Ehepaar)" },
         vine: { id: "OTtQVYI2JY2", cls: "ratio-1", text: "On A Journey By Train" },
