@@ -3,7 +3,7 @@
     $.fn.video2day = function(){
         var $videos = this,
             video2dayObj = {
-                version: "0.8",
+                version: "0.9",
                 defaults: {
                     'addFlexVideoClass': false, // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
                     'position': 'bottom' // target position of video: "top"=prepend=video at top, "bottom"=append=video at bottom
@@ -14,6 +14,7 @@
                     vimeo:       '"//player.vimeo.com/video/{v}"',
                     vevo:        '"http://cache.vevo.com/assets/html/embed.html?video={v}&autoplay=0"',
                     giphy:       '"//giphy.com/embed/{v}"',
+                    jsfiddle:    '"//jsfiddle.net/{v}/embedded/{scope}/{color}/"',
                     dailymotion: '"//www.dailymotion.com/embed/video/{v}"',
                     putpat:      '"http://www.putpat.tv/iframe/videos/{v}"',
                     funnyordie:  '"http://www.funnyordie.com/embed/{v}"',
@@ -29,7 +30,7 @@
 //----------------- Take over user options, if any
                     var options = $.extend( {}, video2dayObj.defaults, useroptions || {} ),
                         vidTypes = Object.keys(video2dayObj.vidParam).concat("other"),
-                        self, html, story, width, height, vid, ratio, vidType, hasPoster, imageExt;
+                        self, html, story, width, height, vid, ratio, vidType, hasPoster, imageExt, scope, color;
 //----------------- For each of the html5video-instances...
                     $videos.each( function(){
 //--------------------- Establish default values for each video (may be overwritten by class settings)
@@ -42,6 +43,8 @@
                         vidType = "";
                         hasPoster = false;
                         imageExt = "jpg";
+                        scope = "js,html,css,result";
+                        color = "dark";
 //--------------------- Analyze class names: split class spec to array and process each single class
                         var classList = self.attr('class').toLowerCase().split(/\s+/);
                         $.each( classList, function(){
@@ -61,6 +64,14 @@
 //------------------------- User specified poster image file type other than standard jpg
                             case "image-":
                               imageExt = this.substr(6,this.length-6);
+                              break;
+//------------------------- jsfiddle: User defines the scope of the embedded jsfiddle object
+                            case "scope-":
+                              scope = this.substr(6,this.length-6);
+                              break;
+//------------------------- User specified poster image file type other than standard jpg
+                            case "color-":
+                              color = this.substr(6,this.length-6);
                               break;
                             default:
                               if (vidTypes.indexOf(this)>=0) vidType = this;
@@ -83,11 +94,12 @@
                               var poster = (hasPoster) ? ' poster="' + vid.substr(0,vid.lastIndexOf(".")+1) + imageExt + '"' : "";
                               html = '<video class="video-js vjs-default-skin" controls preload="auto" width="' + width + '" height="' + height + '" data-setup="{}"' + poster + '><source src="' + vid + '" type="video/mp4"></video>';
                         } else {
-//----------------------- Generate the YouTube/Vimeo/Vevo/BlipTV video embed code
+//----------------------- Generate the YouTube/Vimeo/Vevo/BlipTV/... video embed code
                             html = video2dayObj.vidFrame
                                 .replace(/{w}/gi, width)
                                 .replace(/{h}/gi, height)
                                 .replace(/{p}/gi, video2dayObj.vidParam[vidType].replace(/{v}/gi,vid));
+                            if (vidType==="jsfiddle") html = html.replace(/{scope}/gi, scope).replace(/{color}/gi, color);
                         }
 //--------------------- Add "flex-video" responsive class in case Foundation5 is used
                         if (options.addFlexVideoClass) self.addClass("flex-video");

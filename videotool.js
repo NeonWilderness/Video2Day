@@ -19,7 +19,7 @@ $(document).ready( function(){
     $prep.closest(".story").prepend($prep.html());
 
     // setup the knockout MVVM viewmodel
-    var c43 = "1.33333", c169 = "1.77777";
+    var c43 = "1.33333", c169 = "1.77778";
     var viewModelVideoOptions = {
         txtIframe: ko.observable(""),
         errIframe: ko.observable(""),
