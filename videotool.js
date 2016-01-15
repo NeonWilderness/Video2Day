@@ -62,7 +62,7 @@ $(document).ready( function(){
             { "option": "vimeo", "id": "vimeo.com", "vmatch": "\\/video\\/(.*)" },
             { "option": "vevo", "id": "vevo.com", "vmatch": "\\?video=(.*)\\&" },
             { "option": "dailymotion", "id": "dailymotion.com", "vmatch": "\\/video\\/(.*)" },
-            { "option": "putpat", "id": "putpat.tv", "vmatch": "-(.*)" },
+            { "option": "jsfiddle", "id": "jsfiddle.net", "vmatch": ".net\/(.*)" },
             { "option": "giphy", "id": "giphy.com", "vmatch": "\\/embed\\/(.*)" },
             { "option": "funnyordie", "id": "funnyordie.com", "vmatch": "\\/embed\\/(.*)" },
             { "option": "liveleak", "id": "liveleak.com", "vmatch": "f=(.*)" },

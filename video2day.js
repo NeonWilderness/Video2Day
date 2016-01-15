@@ -16,7 +16,6 @@
                     giphy:       '"//giphy.com/embed/{v}"',
                     jsfiddle:    '"//jsfiddle.net/{v}/embedded/{scope}/{color}/"',
                     dailymotion: '"//www.dailymotion.com/embed/video/{v}"',
-                    putpat:      '"http://www.putpat.tv/iframe/videos/{v}"',
                     funnyordie:  '"http://www.funnyordie.com/embed/{v}"',
                     liveleak:    '"http://www.liveleak.com/ll_embed?f={v}"',
                     vine:        '"https://vine.co/v/{v}/embed/simple"',
@@ -30,7 +29,7 @@
 //----------------- Take over user options, if any
                     var options = $.extend( {}, video2dayObj.defaults, useroptions || {} ),
                         vidTypes = Object.keys(video2dayObj.vidParam).concat("other"),
-                        self, html, story, width, height, vid, ratio, vidType, hasPoster, imageExt, scope, color;
+                        self, html, story, width, height, vid, ratio, vidType, hasPoster, imageExt, scope, color, param;
 //----------------- For each of the html5video-instances...
                     $videos.each( function(){
 //--------------------- Establish default values for each video (may be overwritten by class settings)
@@ -48,14 +47,15 @@
 //--------------------- Analyze class names: split class spec to array and process each single class
                         var classList = self.attr('class').toLowerCase().split(/\s+/);
                         $.each( classList, function(){
+                            param = this.substr(6,this.length-6);
                             switch(this.substr(0,6)){
 //------------------------- User specified explicit width parameter
                             case "width-":
-                              width = parseInt(this.substr(6,this.length-6), 10);
+                              width = parseInt(param);
                               break;
 //------------------------- User specified explicit aspect ratio (e.g. 4:3 as 1.3333, 16:9 as 1.7777, Widescreen 2.4:1 as 2.4)
                             case "ratio-":
-                              ratio = parseFloat(this.substr(6,this.length-6));
+                              ratio = parseFloat(param);
                               break;
 //------------------------- User wants a poster image to be displayed on the video before it starts playing
                             case "poster":
@@ -63,15 +63,15 @@
                               break;
 //------------------------- User specified poster image file type other than standard jpg
                             case "image-":
-                              imageExt = this.substr(6,this.length-6);
+                              imageExt = param;
                               break;
 //------------------------- jsfiddle: User defines the scope of the embedded jsfiddle object
                             case "scope-":
-                              scope = this.substr(6,this.length-6);
+                              scope = param;
                               break;
-//------------------------- User specified poster image file type other than standard jpg
+//------------------------- User specified color scheme dark/light of embedded jsfiddle object
                             case "color-":
-                              color = this.substr(6,this.length-6);
+                              color = param;
                               break;
                             default:
                               if (vidTypes.indexOf(this)>=0) vidType = this;
