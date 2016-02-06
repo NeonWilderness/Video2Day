@@ -21,7 +21,7 @@
                     vine:        '"https://vine.co/v/{v}/embed/simple"',
                     metacafe:    '"http://www.metacafe.com/embed/{v}/"',
                     myvideo:     '"http://www.myvideo.de/embed/{v}"',
-                    soundcloud:  '"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{v}&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual={stripe}"'
+                    soundcloud:  '"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{v}&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual={visual}"'
                 },
                 errmsg: function(content){
                     return '<p class="message">'+content+'</p>';
@@ -30,7 +30,7 @@
 //----------------- Take over user options, if any
                     var options = $.extend( {}, video2dayObj.defaults, useroptions || {} ),
                         vidTypes = Object.keys(video2dayObj.vidParam).concat("other"),
-                        self, html, src, story, width, height, vid, ratio, vidType, hasPoster, imageExt, scope, color, param, stripe;
+                        self, html, src, story, width, height, vid, ratio, vidType, hasPoster, imageExt, scope, color, param, visual;
 //----------------- For each of the html5video-instances...
                     $videos.each( function(){
 //--------------------- Establish default values for each video (may be overwritten by class settings)
@@ -46,7 +46,7 @@
                         imageExt = "jpg";
                         scope = "js,html,css,result";
                         color = "dark";
-                        stripe = false;
+                        visual = true;
 //--------------------- Analyze class names: split class spec to array and process each single class
                         var classList = self.attr('class').toLowerCase().split(/\s+/);
                         $.each( classList, function(){
@@ -78,7 +78,7 @@
                               break;
 //------------------------- User wants soundcloud iframe to be displayed as a smaller stripe (visual=false) vs. a bigger display (visual=true)
                             case "stripe":
-                              stripe = true;
+                              visual = false;
                               break;
                             default:
                               if (vidTypes.indexOf(this)>=0) vidType = this;
@@ -102,10 +102,10 @@
                               html = '<video class="video-js vjs-default-skin" controls preload="auto" width="' + width + '" height="' + height + '" data-setup="{}"' + poster + '><source src="' + vid + '" type="video/mp4"></video>';
                         } else {
 //----------------------- Generate the YouTube/Vimeo/Vevo/... video embed code
-                            src = video2dayObj.vidParam[vidType].replace(/{v}/gi,vid);
+                            src = video2dayObj.vidParam[vidType].replace(/{v}/gi, vid);
                             switch(vidType){
                                 case "jsfiddle":   src = src.replace(/{scope}/gi, scope).replace(/{color}/gi, color); break;
-                                case "soundcloud": src = src.replace(/{stripe}/gi, stripe); height = 150+Math.abs(stripe)*300; break;
+                                case "soundcloud": src = src.replace(/{visual}/gi, visual); height = 150+Math.abs(visual)*300; break;
                             }
                             html = video2dayObj.vidFrame
                                 .replace(/{w}/gi, width)
