@@ -46,6 +46,7 @@ $(document).ready( function(){
         },
         resetOptions: function(){
             this.txtIframe("");
+            this.errIframe("");
             this.fldProvider("youtube");
             this.selWidth("full");
             this.txtPixel("");
@@ -63,6 +64,7 @@ $(document).ready( function(){
             { "option": "vevo", "id": "vevo.com", "vmatch": "\\?video=(.*)\\&" },
             { "option": "dailymotion", "id": "dailymotion.com", "vmatch": "\\/video\\/(.*)" },
             { "option": "jsfiddle", "id": "jsfiddle.net", "vmatch": ".net\/(.*)\/embedded" },
+            { "option": "soundcloud", "id": "api.soundcloud.com", "vmatch": "api.soundcloud.com\/tracks\/(.*?)&" },
             { "option": "giphy", "id": "giphy.com", "vmatch": "\\/embed\\/(.*)" },
             { "option": "funnyordie", "id": "funnyordie.com", "vmatch": "\\/embed\\/(.*)" },
             { "option": "liveleak", "id": "liveleak.com", "vmatch": "f=(.*)" },
@@ -76,8 +78,11 @@ $(document).ready( function(){
         var self = this;
         try {
             var $iframe = $("<div>").html(code).find("iframe").eq(0),
-                ratio = (Math.round(parseInt($iframe.attr("width")) / parseInt($iframe.attr("height")) * 100000) / 100000).toString(),
-                src = $iframe.attr("src"), vid = false;
+                vid = false,
+                src = $iframe.attr("src") || "",
+                width = $iframe.attr("width") || "%",
+                height = $iframe.attr("height") || "%",
+                ratio = (width.indexOf("%")<0 && height.indexOf("%")<0 ? (Math.round(parseInt(width) / parseInt(height) * 100000) / 100000).toString() : c169);
             $.each( this.provider, function(){
                 if (src.indexOf(this.id)>=0){
                     self.fldProvider(this.option);

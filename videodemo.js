@@ -5,6 +5,7 @@ $(function(){
         vevo: { id: "GBUV71300569", cls: "", text: "Jake Bugg - Broken" },
         dailymotion: { id: "x1zb68h", cls: "", text: "Fink - Looking Too Closely (unplugged)" },
         jsfiddle: { id: "u93d2du8", cls: "", text: "jsFiddle - Integration wetter.de widget" },
+        soundcloud: { id: "50824693", cls: "stripe", text: "Ryan O'Shaughnessy - No Name" },
         giphy: { id: "JtwMddKpsF9Hq", cls: "", text: "Dancing Michael Myers" },
         funnyordie: { id: "000a37c115", cls: "ratio-1.6", text: "Girls Are A**holes: In A Bar" },
         liveleak: { id: "cf677a022bd3", cls: "", text: "Kakadu mit langjähriger Streiterfahrung (von geschiedenem Ehepaar)" },
@@ -25,7 +26,7 @@ $(function(){
             .replace("#id",  demoVideoIDs[opt].id);
         $cde.html('<pre class="html top20">'+html+'</pre>').find(".html").snippet("html", {style:"golden",showNum:false});
         $vid.html('<label class="top20">'+demoVideoIDs[opt].text+'</label>'+html.replace(/&lt;/gi,"<").replace(/&gt;/gi,">"));
-        $(".html5video").video2day().init( {addFlexVideoClass: false} );
+        $(".html5video").video2day().init();
     });
     $prv.val("none");
 });
