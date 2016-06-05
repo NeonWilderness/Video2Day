@@ -10,7 +10,7 @@
                 },
                 vidFrame: '<iframe width="{w}" height="{h}" src={p} frameborder="0" allowfullscreen></iframe>',
                 vidParam : {
-                    youtube:     '"//www.youtube.com/embed/{v}"',
+                    youtube:     '"//www.youtube.com/embed/{v}?start={time}"',
                     vimeo:       '"//player.vimeo.com/video/{v}"',
                     vevo:        '"http://cache.vevo.com/assets/html/embed.html?video={v}&autoplay=0"',
                     giphy:       '"//giphy.com/embed/{v}"',
@@ -77,9 +77,9 @@
                             case "color-":
                               color = param;
                               break;
-//------------------------- User specifies start time of a you-tube movie
+//------------------------- User specifies start position of a you-tube movie in seconds
                             case "start-":
-                              starttime = param;
+                              starttime = parseInt(param).toString();
                               break;
 //------------------------- User wants soundcloud iframe to be displayed as a smaller stripe (visual=false) vs. a bigger display (visual=true)
                             case "stripe":
@@ -107,11 +107,11 @@
                               html = '<video class="video-js vjs-default-skin" controls preload="auto" width="' + width + '" height="' + height + '" data-setup="{}"' + poster + '><source src="' + vid + '" type="video/mp4"></video>';
                         } else {
 //----------------------- Generate the YouTube/Vimeo/Vevo/... video embed code
-                            if (vidType==="youtube" && starttime.length) vid += "&t="+starttime;
                             src = video2dayObj.vidParam[vidType].replace(/{v}/gi, vid);
                             switch(vidType){
                                 case "jsfiddle":   src = src.replace(/{scope}/gi, scope).replace(/{color}/gi, color); break;
                                 case "soundcloud": src = src.replace(/{visual}/gi, visual); height = 150+Math.abs(visual)*300; break;
+                                case "youtube":    src = src.replace(/{time}/gi, starttime); break;
                             }
                             html = video2dayObj.vidFrame
                                 .replace(/{w}/gi, width)
