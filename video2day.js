@@ -30,7 +30,7 @@
 //----------------- Take over user options, if any
                     var options = $.extend( {}, video2dayObj.defaults, useroptions || {} ),
                         vidTypes = Object.keys(video2dayObj.vidParam).concat("other"),
-                        self, html, src, story, width, height, vid, ratio, vidType, hasPoster, imageExt, scope, color, param, visual;
+                        self, html, src, story, width, height, vid, ratio, vidType, hasPoster, imageExt, scope, color, param, starttime, visual;
 //----------------- For each of the html5video-instances...
                     $videos.each( function(){
 //--------------------- Establish default values for each video (may be overwritten by class settings)
@@ -46,6 +46,7 @@
                         imageExt = "jpg";
                         scope = "js,html,css,result";
                         color = "dark";
+                        starttime = "";
                         visual = true;
 //--------------------- Analyze class names: split class spec to array and process each single class
                         var classList = self.attr('class').toLowerCase().split(/\s+/);
@@ -75,6 +76,10 @@
 //------------------------- User specified color scheme dark/light of embedded jsfiddle object
                             case "color-":
                               color = param;
+                              break;
+//------------------------- User specifies start time of a you-tube movie
+                            case "start-":
+                              starttime = param;
                               break;
 //------------------------- User wants soundcloud iframe to be displayed as a smaller stripe (visual=false) vs. a bigger display (visual=true)
                             case "stripe":
@@ -106,6 +111,7 @@
                             switch(vidType){
                                 case "jsfiddle":   src = src.replace(/{scope}/gi, scope).replace(/{color}/gi, color); break;
                                 case "soundcloud": src = src.replace(/{visual}/gi, visual); height = 150+Math.abs(visual)*300; break;
+                                case "youtube":    if (starttime.length) src += "&t="+starttime;
                             }
                             html = video2dayObj.vidFrame
                                 .replace(/{w}/gi, width)
