@@ -107,11 +107,11 @@
                               html = '<video class="video-js vjs-default-skin" controls preload="auto" width="' + width + '" height="' + height + '" data-setup="{}"' + poster + '><source src="' + vid + '" type="video/mp4"></video>';
                         } else {
 //----------------------- Generate the YouTube/Vimeo/Vevo/... video embed code
+                            if (vidType==="youtube" && starttime.length) vid += "&t="+starttime;
                             src = video2dayObj.vidParam[vidType].replace(/{v}/gi, vid);
                             switch(vidType){
                                 case "jsfiddle":   src = src.replace(/{scope}/gi, scope).replace(/{color}/gi, color); break;
                                 case "soundcloud": src = src.replace(/{visual}/gi, visual); height = 150+Math.abs(visual)*300; break;
-                                case "youtube":    if (starttime.length) src += "&t="+starttime;
                             }
                             html = video2dayObj.vidFrame
                                 .replace(/{w}/gi, width)
