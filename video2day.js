@@ -3,14 +3,14 @@
     $.fn.video2day = function(){
         var $videos = this,
             video2dayObj = {
-                version: "1.0",
+                version: "1.1",
                 defaults: {
                     'addFlexVideoClass': false, // true=Adds class "flex-video" to surrounding DIV (Foundation 5: enables responsive video layout)
                     'position': 'bottom' // target position of video: "top"=prepend=video at top, "bottom"=append=video at bottom
                 },
                 vidFrame: '<iframe width="{w}" height="{h}" src={p} frameborder="0" allowfullscreen></iframe>',
                 vidParam : {
-                    youtube:     '"//www.youtube.com/embed/{v}?start={time}"',
+                    youtube:     '"//www.youtube.com/embed/{v}?start={starttime}&end={endtime}"',
                     vimeo:       '"//player.vimeo.com/video/{v}"',
                     vevo:        '"http://cache.vevo.com/assets/html/embed.html?video={v}&autoplay=0"',
                     giphy:       '"//giphy.com/embed/{v}"',
@@ -30,7 +30,7 @@
 //----------------- Take over user options, if any
                     var options = $.extend( {}, video2dayObj.defaults, useroptions || {} ),
                         vidTypes = Object.keys(video2dayObj.vidParam).concat("other"),
-                        self, html, src, story, width, height, vid, ratio, vidType, hasPoster, imageExt, scope, color, param, starttime, visual;
+                        self, html, src, story, width, height, vid, ratio, vidType, hasPoster, imageExt, scope, color, param, starttime, endtime, visual;
 //----------------- For each of the html5video-instances...
                     $videos.each( function(){
 //--------------------- Establish default values for each video (may be overwritten by class settings)
@@ -47,6 +47,7 @@
                         scope = "js,html,css,result";
                         color = "dark";
                         starttime = "";
+                        endtime = "";
                         visual = true;
 //--------------------- Analyze class names: split class spec to array and process each single class
                         var classList = self.attr('class').toLowerCase().split(/\s+/);
@@ -77,9 +78,13 @@
                             case "color-":
                               color = param;
                               break;
-//------------------------- User specifies start position of a you-tube movie in seconds
+//------------------------- User specifies start position of a youtube video in seconds
                             case "start-":
                               starttime = parseInt(param).toString();
+                              break;
+//------------------------- User specifies end position of a youtube video in seconds
+                            case "endat-":
+                              endtime = parseInt(param).toString();
                               break;
 //------------------------- User wants soundcloud iframe to be displayed as a smaller stripe (visual=false) vs. a bigger display (visual=true)
                             case "stripe":
@@ -109,14 +114,14 @@
 //----------------------- Generate the YouTube/Vimeo/Vevo/... video embed code
                             src = video2dayObj.vidParam[vidType].replace(/{v}/gi, vid);
                             switch(vidType){
-                                case "jsfiddle":   src = src.replace(/{scope}/gi, scope).replace(/{color}/gi, color); break;
-                                case "soundcloud": src = src.replace(/{visual}/gi, visual); height = 150+Math.abs(visual)*300; break;
-                                case "youtube":    src = src.replace(/{time}/gi, starttime); break;
+                                case "jsfiddle":   src = src.replace(/{scope}/, scope).replace(/{color}/, color); break;
+                                case "soundcloud": src = src.replace(/{visual}/, visual); height = 150+Math.abs(visual)*300; break;
+                                case "youtube":    src = src.replace(/{starttime}/, starttime).replace(/{endtime}/, endtime); break;
                             }
                             html = video2dayObj.vidFrame
-                                .replace(/{w}/gi, width)
-                                .replace(/{h}/gi, height)
-                                .replace(/{p}/gi, src);
+                                .replace(/{w}/g, width)
+                                .replace(/{h}/g, height)
+                                .replace(/{p}/g, src);
                         }
 //--------------------- Add "flex-video" responsive class in case Foundation5/6 is used
                         if (options.addFlexVideoClass) self.addClass("flex-video");
